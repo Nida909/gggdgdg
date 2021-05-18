@@ -58,7 +58,7 @@
 
         <Button
             android:layout_width="match_parent"
-            android:layout_height="35dp"
+            android:layout_height="36dp"
             android:text="Log In"
             android:textStyle="bold"
             android:textSize="15dp"
@@ -70,6 +70,8 @@
             android:background="@drawable/shape"
             android:id="@+id/login"
             android:onClick="login"
+            android:gravity="center"
+
             />
         <TextView
             android:layout_width="match_parent"

@@ -13,11 +13,12 @@
         android:id="@+id/Text"
         android:text="Select Customer You Love"
         android:textSize="25dp"
-        android:textColor="@color/yellow"
+        android:textColor="@color/white"
         android:layout_marginBottom="20dp"
         android:layout_gravity="center"
         android:gravity="center"
         android:layout_marginTop="20dp"
+        android:textStyle="bold"
 
         ></TextView>
 <ListView
