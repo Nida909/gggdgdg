@@ -1,6 +1,8 @@
 package com.example.chatting;
 
 import android.app.Activity;
+import android.content.Context;
+import android.content.res.Resources;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -13,12 +15,15 @@ public class OrderListHolder extends BaseAdapter {
 
     private Activity context;
     ArrayList<history1> customer;
+    String languages;
+    Context con;
+    Resources resources;
 
-
-    public OrderListHolder(Activity context, ArrayList cust) {
+    public OrderListHolder(Activity context, ArrayList cust,String language) {
         // super(context, R.layout.row_item, countries);
         this.context = context;
         this.customer=cust;
+        this.languages=language;
 
     }
 
@@ -46,10 +51,31 @@ public class OrderListHolder extends BaseAdapter {
             vh = (history2.ViewHolder) convertView.getTag();
         }
 
-        vh.txt2.setText("Contact no :"+customer.get(position).getName());
-        vh.txt1.setText("Customer Name:"+customer.get(position).getOrderNo());
-        vh.txt3.setText("Pick Up Loc :"+customer.get(position).getQuantity());
-        vh.txt4.setText("Drop Off Loc : "+customer.get(position).getPrice());
+
+        if(languages.equals("ENGLISH"))
+        {
+
+            vh.txt2.setText("Contact no: "+customer.get(position).getName());
+            vh.txt1.setText("Customer Name: "+customer.get(position).getOrderNo());
+            vh.txt3.setText("Pick Up Loc: "+customer.get(position).getQuantity());
+            vh.txt4.setText("Drop Off Loc: "+customer.get(position).getPrice());
+
+        }
+
+
+        if(languages.equals("اردو"))
+        {
+            vh.txt2.setText("رابطے کا نمبر: "+customer.get(position).getName());
+            vh.txt1.setText("گاہک کا نام: "+customer.get(position).getOrderNo());
+            vh.txt3.setText(" جس جگہ سے لے جانا ہے: "+customer.get(position).getQuantity());
+            vh.txt4.setText("منزل مقصود: "+customer.get(position).getPrice());
+
+
+        }
+
+
+
+
         return  row;
     }
 

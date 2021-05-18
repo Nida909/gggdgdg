@@ -12,7 +12,7 @@
         android:layout_height="wrap_content"
         android:id="@+id/Text"
         android:text="Select Customer You Love"
-        android:textSize="30dp"
+        android:textSize="25dp"
         android:textColor="@color/yellow"
         android:layout_marginBottom="20dp"
         android:layout_gravity="center"
@@ -26,7 +26,7 @@
     android:id="@+id/list"
     android:layout_marginTop="15dp"
     android:layout_marginLeft="20dp"
-    android:layout_marginRight="20dp"
+    android:layout_marginRight="40dp"
     android:divider="@color/white"
     android:dividerHeight="1dp"
     ></ListView>

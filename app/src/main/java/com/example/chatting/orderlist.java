@@ -107,7 +107,7 @@ public class orderlist extends AppCompatActivity {
                 }
                 if(!customer.isEmpty())
                 {
-                customhList = new OrderListHolder(activity,customer);
+                customhList = new OrderListHolder(activity,customer,languages);
                 listView.setAdapter(customhList);
                 customhList.notifyDataSetChanged();
 
