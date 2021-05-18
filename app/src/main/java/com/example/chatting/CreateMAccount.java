@@ -222,6 +222,7 @@ if(check.equals("MilkMan"))
 
         Intent intent = new Intent(this, orderlist.class);
         intent.putExtra("val", vall);
+        intent.putExtra("language", str);
         startActivity(intent);
     }
 }

@@ -6,7 +6,9 @@ import androidx.appcompat.app.AppCompatActivity;
 
 import android.app.Activity;
 import android.app.ProgressDialog;
+import android.content.Context;
 import android.content.Intent;
+import android.content.res.Resources;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.AdapterView;
@@ -33,6 +35,9 @@ public class orderlist extends AppCompatActivity {
     String str1,str2,str3,str4,str5;
     String RiderId;
  OrderListHolder customhList;
+    Context context;
+    Resources resources;
+    String lang;
  int count=0;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -46,6 +51,39 @@ public class orderlist extends AppCompatActivity {
         listView=(ListView)findViewById(R.id.list);
         activity = this;
         customer=new ArrayList<history1>();
+        String languages = intent.getExtras().getString("language");
+
+        if(languages.equals("ENGLISH"))
+        {
+
+            context = LocalHelper.setLocale(orderlist.this, "en");
+            resources = context.getResources();
+            tv.setText("Select Customer You Love");
+            lang="ENGLISH";
+
+
+
+
+        }
+        if(languages.equals("اردو"))
+        {
+
+            context = LocalHelper.setLocale(orderlist.this, "an");
+            resources = context.getResources();
+            tv.setText("اپنے پسندیدہ گاہک کو منتخب کریں");
+            lang="اردو";
+
+
+
+
+        }
+
+
+
+
+
+
+
 
 
         ref.addValueEventListener(new ValueEventListener() {
@@ -75,7 +113,32 @@ public class orderlist extends AppCompatActivity {
 
                 }else
                 {
-                    tv.setText("No Customer Here ");
+
+                    if(languages.equals("ENGLISH"))
+                    {
+
+                        context = LocalHelper.setLocale(orderlist.this, "en");
+                        resources = context.getResources();
+                        tv.setText("No Customer Found ");
+                        lang="ENGLISH";
+
+
+
+
+                    }
+                    if(languages.equals("اردو"))
+                    {
+
+                        context = LocalHelper.setLocale(orderlist.this, "an");
+                        resources = context.getResources();
+                        tv.setText("کوئی کسٹمر نہیں ہے");
+                        lang="اردو";
+
+
+
+
+                    }
+
                 }
 
             }
@@ -96,7 +159,6 @@ public class orderlist extends AppCompatActivity {
                 String cn=customer.get(position).getOrderNo();
                 String mContact=customer.get(position).getName();
                 int Rcount=customer.get(position).getCount();
-                Toast.makeText(getApplicationContext(),"You Selected "+pickUp+ " as Country", Toast.LENGTH_LONG).show();
 
                 Intent intent=new Intent(orderlist.this, MapsActivity1.class);
                 intent.putExtra("PickUp",pickUp);
@@ -106,7 +168,7 @@ public class orderlist extends AppCompatActivity {
                 intent.putExtra("Contact",mContact);
                 intent.putExtra("RCount",String.valueOf(Rcount));
                 startActivity(intent);
-                Toast.makeText(getApplicationContext(),"You Selected "+customer.get(position).getName()+ " as Country", Toast.LENGTH_LONG).show();        }
+            }
         });
     }
 }
