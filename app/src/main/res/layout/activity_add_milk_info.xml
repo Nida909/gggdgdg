@@ -108,21 +108,18 @@
             />
 
 
-
-
-
     </RadioGroup>
 
 
     <Button
 
-        android:layout_width="wrap_content"
+        android:layout_width="150dp"
         android:layout_height="wrap_content"
         android:text="Post Details"
         android:textColor="@color/white"
         android:textStyle="bold"
         android:textSize="16dp"
-        android:layout_marginLeft="220dp"
+        android:layout_marginLeft="200dp"
         android:layout_marginTop="10dp"
         android:background="@drawable/shape1"
         android:onClick="PostDetails"
