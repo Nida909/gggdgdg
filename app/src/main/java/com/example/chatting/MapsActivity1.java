@@ -103,7 +103,6 @@ Button btn,complete;
         ccontact=intent.getStringExtra("Contact");
         Rcount=intent.getStringExtra("RCount");
         languages = intent.getExtras().getString("language");
-        //Toast.makeText(MapsActivity1.this,pickup+dropoff,Toast.LENGTH_SHORT).show();
         btn=(Button)findViewById(R.id.confirm) ;
         complete=(Button)findViewById(R.id.Complete) ;
         listview = (ListView) findViewById(R.id.list);
@@ -137,7 +136,7 @@ Contact.setText(ccontact);
             complete.setText("سواری مکمل");
             distn.setText("فاصلہ");
             btn.setText("سواری دینا چاہتا ہوں");
-            text.setText("اپنا پیغام ٹائپ کریں");
+            text.setHint("اپنا پیغام ٹائپ کریں");
 
             lang="اردو";
 
