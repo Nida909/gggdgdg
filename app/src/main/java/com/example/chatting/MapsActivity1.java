@@ -137,6 +137,7 @@ Contact.setText(ccontact);
             complete.setText("سواری مکمل");
             distn.setText("فاصلہ");
             btn.setText("سواری دینا چاہتا ہوں");
+            text.setText("اپنا پیغام ٹائپ کریں");
 
             lang="اردو";
 

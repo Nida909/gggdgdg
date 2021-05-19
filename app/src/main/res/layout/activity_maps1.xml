@@ -72,10 +72,11 @@
             android:id="@+id/edt"
             android:layout_alignParentLeft="true"
             android:background="@drawable/shape"
-            android:hint="Type Your Text . . ."
+            android:hint="Type Your Message"
             android:textColor="@color/black"
             android:padding="10dp"
             android:layout_marginLeft="50dp"
+            android:layout_marginBottom="20dp"
 
             ></EditText>
         <ImageButton
@@ -84,6 +85,7 @@
             android:onClick="onbtn"
             android:src="@drawable/sendbtn"
             android:layout_alignParentBottom="true"
+            android:layout_marginBottom="20dp"
             android:layout_alignParentRight="true"
             android:layout_marginRight="5dp"
 
