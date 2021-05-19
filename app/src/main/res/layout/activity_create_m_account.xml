@@ -8,34 +8,26 @@
     android:orientation="vertical"
     android:background="@color/black"
     android:paddingLeft="70dp"
-    android:paddingRight="70dp">
+    android:paddingRight="70dp"
+    >
+
     <ImageView
         android:layout_height="100dp"
         android:layout_width="120dp"
         android:src="@drawable/prof"
         android:layout_marginLeft="30dp"
-        android:layout_marginTop="50dp"
+        android:layout_marginTop="40dp"
         android:layout_gravity="center"
 
         />
 
-    <TextView
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="CREATE ACCOUNT"
-        android:textColor="@color/yellow"
-        android:textSize="25dp"
-        android:textStyle="bold"
-        android:id="@+id/createaccount"
-        android:layout_gravity="center"
 
-        />
     <TextView
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="Feed Us With Some Details"
         android:textColor="@color/teal_200"
-        android:textSize="15dp"
+        android:textSize="21dp"
         android:textStyle="bold"
         android:layout_marginBottom="20dp"
         android:layout_marginLeft="15dp"
@@ -48,7 +40,8 @@
 
     <EditText
 
-        android:layout_width="match_parent"
+        android:layout_width="170dp"
+        android:backgroundTint="@android:color/white"
         android:layout_height="wrap_content"
         android:hint="enter your name"
         android:inputType="text"
@@ -56,10 +49,12 @@
         android:textColorHint="@color/white"
         android:id="@+id/name"
 
+
         />
     <EditText
 
-        android:layout_width="match_parent"
+        android:layout_width="170dp"
+        android:backgroundTint="@android:color/white"
         android:layout_height="wrap_content"
         android:hint="enter your location"
         android:inputType="text"
@@ -69,7 +64,8 @@
         android:id="@+id/location"/>
     <EditText
 
-        android:layout_width="match_parent"
+        android:layout_width="170dp"
+        android:backgroundTint="@android:color/white"
         android:layout_height="wrap_content"
         android:hint="enter your email"
         android:inputType="text"
@@ -78,7 +74,8 @@
         android:textColor="@color/white"
         />
     <EditText
-        android:layout_width="match_parent"
+        android:layout_width="170dp"
+        android:backgroundTint="@android:color/white"
         android:layout_height="wrap_content"
         android:hint="enter your password"
         android:inputType="text"
@@ -86,7 +83,8 @@
         android:textColor="@color/white"
         android:id="@+id/password"/>
     <EditText
-        android:layout_width="match_parent"
+        android:layout_width="170dp"
+        android:backgroundTint="@android:color/white"
         android:layout_height="wrap_content"
         android:hint="enter your contact number"
         android:inputType="text"
