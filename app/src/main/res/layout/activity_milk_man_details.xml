@@ -142,7 +142,7 @@
             android:textStyle="bold"
             android:onClick="onplace"
             android:id="@+id/placeorder"
-            android:layout_marginTop="0dp"/>
+            android:layout_marginTop="10dp"/>
         <Button
             android:layout_marginTop="8dp"
             android:layout_width="wrap_content"
