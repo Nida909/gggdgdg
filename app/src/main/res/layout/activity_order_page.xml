@@ -64,14 +64,16 @@
             />
         <Button
             android:layout_width="159dp"
-            android:layout_height="50dp"
+            android:layout_height="70dp"
             android:text="Confirm Order"
             android:background="@drawable/shape1"
-            android:layout_marginTop="20dp"
+            android:layout_marginTop="15dp"
             android:textColor="@color/white"
             android:textStyle="bold"
             android:onClick="onconfirm"
             android:id="@+id/btn2"
+            android:layout_gravity="center"
+            android:gravity="center"
 
             />
 
