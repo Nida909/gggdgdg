@@ -148,7 +148,7 @@ public class MilkManList2 extends AppCompatActivity {
 
     public boolean onCreateOptionsMenu(Menu menu) {
         super.onCreateOptionsMenu(menu);
-        getMenuInflater().inflate(R.menu.main1, menu);
+        getMenuInflater().inflate(R.menu.mainn, menu);
 
         chatwithothers = menu.findItem(R.id.Chat);
        // ordershistory= menu.findItem(R.id.Ordersh);
