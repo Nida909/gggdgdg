@@ -38,7 +38,7 @@
 
     <EditText
 
-        android:layout_width="wrap_content"
+        android:layout_width="match_parent"
         android:backgroundTint="@android:color/white"
         android:layout_height="wrap_content"
         android:hint="enter your name"
@@ -51,7 +51,7 @@
         />
     <EditText
 
-        android:layout_width="wrap_content"
+        android:layout_width="match_parent"
         android:backgroundTint="@android:color/white"
         android:layout_height="wrap_content"
         android:hint="enter your location"
@@ -62,7 +62,7 @@
         android:id="@+id/location"/>
     <EditText
 
-        android:layout_width="wrap_content"
+        android:layout_width="match_parent"
         android:backgroundTint="@android:color/white"
         android:layout_height="wrap_content"
         android:hint="enter your email"
@@ -72,7 +72,7 @@
         android:textColor="@color/white"
         />
     <EditText
-        android:layout_width="wrap_content"
+        android:layout_width="match_parent"
         android:backgroundTint="@android:color/white"
         android:layout_height="wrap_content"
         android:hint="enter your password"
@@ -81,7 +81,7 @@
         android:textColor="@color/white"
         android:id="@+id/password"/>
     <EditText
-        android:layout_width="wrap_content"
+        android:layout_width="match_parent"
         android:backgroundTint="@android:color/white"
         android:layout_height="wrap_content"
         android:hint="enter your contact number"
