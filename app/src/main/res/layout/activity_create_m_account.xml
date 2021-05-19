@@ -27,10 +27,9 @@
         android:layout_height="wrap_content"
         android:text="Feed Us With Some Details"
         android:textColor="@color/teal_200"
-        android:textSize="21dp"
+        android:textSize="17dp"
         android:textStyle="bold"
         android:layout_marginBottom="17dp"
-        android:layout_marginLeft="15dp"
         android:id="@+id/details"
         android:layout_gravity="center"
 
@@ -40,7 +39,7 @@
 
     <EditText
 
-        android:layout_width="200dp"
+        android:layout_width="240dp"
         android:backgroundTint="@android:color/white"
         android:layout_height="wrap_content"
         android:hint="enter your name"
@@ -53,7 +52,7 @@
         />
     <EditText
 
-        android:layout_width="200dp"
+        android:layout_width="240dp"
         android:backgroundTint="@android:color/white"
         android:layout_height="wrap_content"
         android:hint="enter your location"
@@ -64,7 +63,7 @@
         android:id="@+id/location"/>
     <EditText
 
-        android:layout_width="200dp"
+        android:layout_width="240dp"
         android:backgroundTint="@android:color/white"
         android:layout_height="wrap_content"
         android:hint="enter your email"
@@ -74,7 +73,7 @@
         android:textColor="@color/white"
         />
     <EditText
-        android:layout_width="200dp"
+        android:layout_width="240dp"
         android:backgroundTint="@android:color/white"
         android:layout_height="wrap_content"
         android:hint="enter your password"
@@ -83,7 +82,7 @@
         android:textColor="@color/white"
         android:id="@+id/password"/>
     <EditText
-        android:layout_width="200dp"
+        android:layout_width="240dp"
         android:backgroundTint="@android:color/white"
         android:layout_height="wrap_content"
         android:hint="enter your contact number"
@@ -92,18 +91,16 @@
         android:textColor="@color/white"
         android:id="@+id/contactnumber"/>
     <Button
-        android:layout_width="200dp"
+        android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="Save Details"
         android:textStyle="bold"
         android:textColor="@color/white"
         android:background="@drawable/shape1"
-        android:layout_marginTop="10dp"
+        android:layout_marginTop="15dp"
         android:layout_marginLeft="40dp"
         android:onClick="SaveDetails"
         android:id="@+id/btn"
-
-
         />
 
 
