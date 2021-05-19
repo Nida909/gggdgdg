@@ -61,7 +61,7 @@
             android:layout_height="36dp"
             android:text="Log In"
             android:textStyle="bold"
-            android:textSize="15dp"
+            android:textSize="13dp"
             android:layout_gravity="center"
             android:textColor="@color/white"
             android:layout_marginRight="40dp"
