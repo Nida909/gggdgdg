@@ -35,8 +35,8 @@ public class PhoneNumberActivity extends AppCompatActivity {
         t1=findViewById(R.id.first);
         t2=findViewById(R.id.second);
         Intent inten=getIntent();
-         languages = inten.getExtras().getString("language");
-         languages = inten.getExtras().getString("language1");
+        languages = inten.getExtras().getString("language");
+        languages = inten.getExtras().getString("language1");
 
         if(languages.equals("اردو")) {
 
@@ -83,7 +83,7 @@ public class PhoneNumberActivity extends AppCompatActivity {
             str1="ENGLISH";
 
         }
-       if(auth.getCurrentUser()!=null)
+        if(auth.getCurrentUser()!=null)
         {
             Intent intent=new Intent(PhoneNumberActivity.this, MainActivity.class);
             inten.putExtra("language",str1);
