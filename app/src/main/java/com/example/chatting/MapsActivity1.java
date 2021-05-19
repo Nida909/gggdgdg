@@ -87,6 +87,7 @@ Button btn,complete;
     Context context;
     Resources resources;
     String lang;
+    String languages;
 
     ArrayList<RiderClass> array=new ArrayList<RiderClass>();
     @Override
@@ -101,7 +102,7 @@ Button btn,complete;
       customer=intent.getStringExtra("customer");
         ccontact=intent.getStringExtra("Contact");
         Rcount=intent.getStringExtra("RCount");
-        String languages = intent.getExtras().getString("language");
+        languages = intent.getExtras().getString("language");
         //Toast.makeText(MapsActivity1.this,pickup+dropoff,Toast.LENGTH_SHORT).show();
         btn=(Button)findViewById(R.id.confirm) ;
         complete=(Button)findViewById(R.id.Complete) ;
@@ -135,6 +136,7 @@ Contact.setText(ccontact);
             resources = context.getResources();
             complete.setText("سواری مکمل");
             distn.setText("فاصلہ");
+            btn.setText("سواری دینا چاہتا ہوں");
 
             lang="اردو";
 
@@ -369,7 +371,19 @@ protected void onPause()
                 }
                 mMap.animateCamera(CameraUpdateFactory.newLatLngZoom(currentLatLng, 16));
                 p3=mMap.addPolyline(new PolylineOptions().add(latLng1,currentLatLng));
-                distn.setText("Distance is "+ SphericalUtil.computeDistanceBetween(latLng2, currentLatLng)+"km");
+                if(languages.equals("اردو"))
+                {
+                    distn.setText("فاصلہ: "+ SphericalUtil.computeDistanceBetween(latLng2, currentLatLng)+"km");
+                    lang="اردو";
+                }
+                if(languages.equals("ENGLISH"))
+                {
+                    distn.setText("Distance is "+ SphericalUtil.computeDistanceBetween(latLng2, currentLatLng)+"km");
+                    lang="ENGLISH";
+                }
+
+
+
 
             }
 
@@ -407,7 +421,7 @@ protected void onPause()
    if(!text.getText().toString().equals(null))
    {
        //array.clear();
-       RiderClass rc=new RiderClass(text.getText().toString(),"Green");
+       RiderClass rc=new RiderClass(text.getText().toString(),"Black");
        array.add(rc);
        RiderAdapter ra=new RiderAdapter(activity,array);
        listview.setAdapter(ra);

@@ -75,7 +75,7 @@
             android:hint="Type Your Text . . ."
             android:textColor="@color/black"
             android:padding="10dp"
-            android:layout_marginLeft="90dp"
+            android:layout_marginLeft="50dp"
 
             ></EditText>
         <ImageButton
@@ -85,7 +85,7 @@
             android:src="@drawable/sendbtn"
             android:layout_alignParentBottom="true"
             android:layout_alignParentRight="true"
-            android:layout_marginRight="3dp"
+            android:layout_marginRight="5dp"
 
 
             ></ImageButton>
