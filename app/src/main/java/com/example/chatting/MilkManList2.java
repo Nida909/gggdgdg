@@ -197,7 +197,7 @@ public class MilkManList2 extends AppCompatActivity {
 
                 Intent inten = new Intent(this, PhoneNumberActivity.class);
                 //inten.putExtra("var", str);
-                inten.putExtra("language",str1);
+                inten.putExtra("language1",str1);
                 startActivity(inten);
                 return true;
             default:
