@@ -72,7 +72,6 @@ public class CreateMAccount extends AppCompatActivity {
 
             context = LocalHelper.setLocale(CreateMAccount.this, "en");
             resources = context.getResources();
-            createaccount.setText(resources.getString(R.string.account1));
             details.setText(resources.getString(R.string.details));
             name.setHint(resources.getString(R.string.name1));
             location.setHint(resources.getString(R.string.location));
@@ -95,7 +94,6 @@ public class CreateMAccount extends AppCompatActivity {
         {
             context = LocalHelper.setLocale(CreateMAccount.this, "an");
             resources = context.getResources();
-            createaccount.setText(resources.getString(R.string.account1));
             details.setText(resources.getString(R.string.details));
             name.setHint(resources.getString(R.string.name1));
             location.setHint(resources.getString(R.string.location));
