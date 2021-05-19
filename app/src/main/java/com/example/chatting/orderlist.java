@@ -167,6 +167,7 @@ public class orderlist extends AppCompatActivity {
                 intent.putExtra("customer",cn);
                 intent.putExtra("Contact",mContact);
                 intent.putExtra("RCount",String.valueOf(Rcount));
+                intent.putExtra("language",lang);
                 startActivity(intent);
             }
         });

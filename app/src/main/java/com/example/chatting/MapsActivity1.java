@@ -3,10 +3,12 @@ package com.example.chatting;
 import android.Manifest;
 import android.app.Activity;
 import android.app.AlertDialog;
+import android.content.Context;
 import android.content.DialogInterface;
 import android.content.Intent;
 import android.content.IntentSender;
 import android.content.pm.PackageManager;
+import android.content.res.Resources;
 import android.database.Cursor;
 import android.database.sqlite.SQLiteDatabase;
 import android.location.Address;
@@ -82,6 +84,10 @@ Button btn,complete;
     ListView listview;
     Activity activity;
     TextView distn;
+    Context context;
+    Resources resources;
+    String lang;
+
     ArrayList<RiderClass> array=new ArrayList<RiderClass>();
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -95,6 +101,7 @@ Button btn,complete;
       customer=intent.getStringExtra("customer");
         ccontact=intent.getStringExtra("Contact");
         Rcount=intent.getStringExtra("RCount");
+        String languages = intent.getExtras().getString("language");
         //Toast.makeText(MapsActivity1.this,pickup+dropoff,Toast.LENGTH_SHORT).show();
         btn=(Button)findViewById(R.id.confirm) ;
         complete=(Button)findViewById(R.id.Complete) ;
@@ -107,6 +114,34 @@ Contact=(TextView)findViewById(R.id.ccontact) ;
 text=(EditText) findViewById(R.id.edt);
 Name.setText(customer);
 Contact.setText(ccontact);
+
+
+        if(languages.equals("ENGLISH"))
+        {
+
+            context = LocalHelper.setLocale(MapsActivity1.this, "en");
+            resources = context.getResources();
+            complete.setText("Ride Complete");
+
+            lang="ENGLISH";
+
+
+        }
+
+        if(languages.equals("اردو"))
+        {
+
+            context = LocalHelper.setLocale(MapsActivity1.this, "an");
+            resources = context.getResources();
+            complete.setText("سواری مکمل");
+            distn.setText("فاصلہ");
+
+            lang="اردو";
+
+
+
+
+        }
         // Obtain the SupportMapFragment and get notified when the map is ready to be used.
         SupportMapFragment mapFragment = (SupportMapFragment) getSupportFragmentManager()
                 .findFragmentById(R.id.map);

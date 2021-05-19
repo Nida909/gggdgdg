@@ -65,7 +65,7 @@ public class OrderListHolder extends BaseAdapter {
 
         if(languages.equals("اردو"))
         {
-            vh.txt2.setText("رابطے کا نمبر: "+customer.get(position).getName());
+            vh.txt2.setText("رابطہ نمبر: "+customer.get(position).getName());
             vh.txt1.setText("گاہک کا نام: "+customer.get(position).getOrderNo());
             vh.txt3.setText(" جس جگہ سے دودھ لینا ہے: "+customer.get(position).getQuantity());
             vh.txt4.setText("منزل: "+customer.get(position).getPrice());
