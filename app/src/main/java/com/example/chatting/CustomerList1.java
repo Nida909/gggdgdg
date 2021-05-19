@@ -76,8 +76,23 @@ public class CustomerList1 extends AppCompatActivity {
                 str1 = cr.getString(0);
                 str2 = cr.getString(1);
                 str3 = cr.getString(2);
-                MilkMan mObj = new MilkMan(str1, "Loc : "+str2 + " ,  Contact : " + str3,String.valueOf(id));
-                customer.add(mObj);
+                if(languages.equals("ENGLISH")) {
+
+                    context = LocalHelper.setLocale(CustomerList1.this, "en");
+                    resources = context.getResources();
+                    MilkMan mObj = new MilkMan(str1, "Loc: "+str2 + " ,  Contact: " + str3,String.valueOf(id));
+                    customer.add(mObj);
+                }
+
+                if(languages.equals("اردو")) {
+
+                    context = LocalHelper.setLocale(CustomerList1.this, "an");
+                    resources = context.getResources();
+                    MilkMan mObj = new MilkMan(str1, "جگہ: "+str2 + " ,  رابطہ نمبر: " + str3,String.valueOf(id));
+                    customer.add(mObj);
+                }
+
+
             }
             listView = (ListView) findViewById(R.id.clist);
             CustomerLists customList = new CustomerLists(activity,customer);
