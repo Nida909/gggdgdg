@@ -14,8 +14,8 @@
         android:layout_height="wrap_content"
         android:text="Add Milk Details"
         android:textColor="@color/white"
-        android:textSize="40dp"
-        android:layout_marginLeft="35dp"
+        android:textSize="35dp"
+        android:layout_marginLeft="45dp"
         android:layout_marginTop="50dp"
         android:textStyle="bold"
         android:id="@+id/heading"
@@ -49,7 +49,7 @@
         android:layout_height="wrap_content"
         android:text="Milk Category"
         android:layout_marginTop="20dp"
-        android:layout_marginLeft="200dp"
+        android:layout_marginLeft="220dp"
         android:textColor="@color/white"
         android:textStyle="bold"
         android:textSize="20dp"
@@ -69,7 +69,7 @@
 
             android:text="Goat Milk"
             android:textColor="@color/white"
-            android:layout_marginLeft="200dp"
+            android:layout_marginLeft="220dp"
             android:buttonTint="@color/white"
             android:id="@+id/goatmilk"
 
@@ -82,7 +82,7 @@
 
             android:text="Cow Milk"
             android:textColor="@color/white"
-            android:layout_marginLeft="200dp"
+            android:layout_marginLeft="220dp"
 
             android:buttonTint="@color/white"
             android:id="@+id/cowmilk"
@@ -98,7 +98,7 @@
 
             android:text="Baffalo Milk"
             android:textColor="@color/white"
-            android:layout_marginLeft="200dp"
+            android:layout_marginLeft="220dp"
 
             android:buttonTint="@color/white"
             android:id="@+id/baffalomilk"
