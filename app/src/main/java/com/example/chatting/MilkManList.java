@@ -179,13 +179,13 @@ ImageButton img;
                     s4 = cc.getString(3);
                     s3 = String.valueOf(id);
                     if (languages.equals("ENGLISH")) {
-                        MilkMan mObj = new MilkMan(s1, "Category :" + s4 + ", Loc :" + s2, s3);
+                        MilkMan mObj = new MilkMan(s1, "Category: " + s4 + ", Loc: " + s2, s3);
 
                         arrayList.add(mObj);
                     }
                     else
                     {
-                        MilkMan mObj = new MilkMan(s1,   "قسم"+s4 +" , "+"جگہ"+s2, s3);
+                        MilkMan mObj = new MilkMan(s1,   "قسم: "+s4 +" , "+"جگہ: "+s2, s3);
 
                         arrayList.add(mObj);
                     }
