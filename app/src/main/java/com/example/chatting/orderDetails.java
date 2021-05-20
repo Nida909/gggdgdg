@@ -1,6 +1,8 @@
 package com.example.chatting;
 
+import android.content.Context;
 import android.content.Intent;
+import android.content.res.Resources;
 import android.database.Cursor;
 import android.database.sqlite.SQLiteDatabase;
 import android.os.Bundle;
@@ -13,12 +15,17 @@ public class orderDetails extends AppCompatActivity {
 TextView t1,t2,t3,t4,t5,t6;
    DatabaseHelper dbHelper;
     SQLiteDatabase db;
+    Context context;
+    Resources resources;
+    String str;
+    String languages;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_order_details);
         Intent intent=getIntent();
         String str=intent.getStringExtra("val");
+        languages=intent.getStringExtra("language");
         dbHelper = new DatabaseHelper(this);
         db = dbHelper.getReadableDatabase();
         t1=(TextView)findViewById(R.id.txt1);
@@ -49,11 +56,34 @@ TextView t1,t2,t3,t4,t5,t6;
         String s1=cr.getString(0);
         String s2=cr.getString(1);
         String s3=cr.getString(2);
-        t1.setText("Customer Name :   "+s1);
-        t2.setText("Contact No :   "+s2);
-        t3.setText("Destination :   "+s3);
-        t4.setText("Milk Category :   "+qlt);
-        t5.setText("Milk Quantity :   "+String.valueOf(qnt));
-        t6.setText("Price :  "+String.valueOf(prc));
+
+        if(languages.equals("ENGLISH")) {
+
+            context = LocalHelper.setLocale(orderDetails.this, "en");
+            resources = context.getResources();
+            t1.setText("Customer Name:   "+s1);
+            t2.setText("Contact No:   "+s2);
+            t3.setText("Destination:   "+s3);
+            t4.setText("Milk Category:   "+qlt);
+            t5.setText("Milk Quantity:   "+String.valueOf(qnt));
+            t6.setText("Price:  "+String.valueOf(prc));
+
+
+        }
+        if(languages.equals("اردو")) {
+
+            context = LocalHelper.setLocale(orderDetails.this, "an");
+            resources = context.getResources();
+            t1.setText("گاہک کا نام:   "+s1);
+            t2.setText("رابطہ نمبر:   "+s2);
+            t3.setText("منزل:   "+s3);
+            t4.setText("دودھ کی قسم:   "+qlt);
+            t5.setText("دودھ کی مقدار:   "+String.valueOf(qnt));
+            t6.setText("قیمت:  "+String.valueOf(prc));
+
+
+        }
+
+
     }
 }

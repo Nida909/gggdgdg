@@ -106,6 +106,7 @@ public class CustomerList1 extends AppCompatActivity {
                     String ss=customer.get(position).getOrderNo();
                     Intent intent=new Intent(CustomerList1.this,orderDetails.class);
                     intent.putExtra("val",ss);
+                    intent.putExtra("language", str);
                     startActivity(intent);
                     Toast.makeText(getApplicationContext(),"You Selected "+customer.get(position).getName()+ " as Country", Toast.LENGTH_LONG).show();        }
             });
