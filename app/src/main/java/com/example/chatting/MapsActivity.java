@@ -145,9 +145,10 @@ public class MapsActivity extends FragmentActivity implements OnMapReadyCallback
             @Override
             public void onClick(View v) {
                str=location.getText().toString();
-                List<Address> addressList=null;
-                if(location!=null || !location.equals(""))
+
+                if(str!=null )
                 {
+                    List<Address> addressList=null;
                     Geocoder geocoder=new Geocoder(MapsActivity.this);
                     try {
                         addressList=geocoder.getFromLocationName(str,1);
@@ -241,7 +242,7 @@ public class MapsActivity extends FragmentActivity implements OnMapReadyCallback
 
     public void Continue(View v)
     {
-if(location==null) {
+if(str==null) {
     Toast.makeText(MapsActivity.this,"Please enter your Drop off location",Toast.LENGTH_SHORT).show();
 }
 else

@@ -22,11 +22,15 @@ public class MainActivity2 extends AppCompatActivity {
     Context context;
     Resources resources;
     String str;
+    FirebaseDatabase fd;
+    DatabaseReference dr;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main2);
-
+        fd=FirebaseDatabase.getInstance();
+dr=fd.getReference();
+dr.child("nn").setValue("nida");
         milkman=findViewById(R.id.milkman);
         customer=findViewById(R.id.customer);
        // owner=findViewById(R.id.owner);

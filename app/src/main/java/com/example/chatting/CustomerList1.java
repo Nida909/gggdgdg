@@ -68,7 +68,7 @@ public class CustomerList1 extends AppCompatActivity {
 
 
             while (c.moveToNext()) {
-                Long id = c.getLong(0);
+                long id = c.getLong(0);
                 long place=c.getLong(1);
                 String[] column = {DatabaseContract.Customers.COL_NAME, DatabaseContract.Customers.COL_LOCATION, DatabaseContract.Customers.COL_CONTACT};
                 Cursor cr = db.query(DatabaseContract.Customers.TABLE_NAME, column, DatabaseContract.Customers._ID + "=?", new String[]{String.valueOf(place)}, null, null, null, null);
@@ -88,7 +88,8 @@ public class CustomerList1 extends AppCompatActivity {
 
                     context = LocalHelper.setLocale(CustomerList1.this, "an");
                     resources = context.getResources();
-                    MilkMan mObj = new MilkMan(str1, "جگہ: "+str2 + " ,  رابطہ نمبر: " + str3,String.valueOf(id));
+                  //  MilkMan mObj = new MilkMan(str1, "جگہ: "+str2 + " ,  رابطہ نمبر: " + str3,String.valueOf(id));
+                    MilkMan mObj = new MilkMan(str1, "جگہ "+str2 + "رابطہ نمبر " + str3,String.valueOf(id));
                     customer.add(mObj);
                 }
 

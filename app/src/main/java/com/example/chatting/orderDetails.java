@@ -44,7 +44,7 @@ TextView t1,t2,t3,t4,t5,t6;
        c.moveToFirst();
         long by=c.getLong(0);
         String qlt=c.getString(1);
-        long qnt=c.getLong(2);
+        String qnt=c.getString(2);
         long prc=c.getLong(3);
         String[] colum={DatabaseContract.Customers.COL_NAME, DatabaseContract.Customers.COL_CONTACT, DatabaseContract.Customers.COL_LOCATION};
         Cursor cr = db.query(DatabaseContract.Customers.TABLE_NAME,colum, DatabaseContract.Customers._ID + "=?", new String[] {String.valueOf(by)}
@@ -64,8 +64,8 @@ TextView t1,t2,t3,t4,t5,t6;
             t1.setText("Customer Name:   "+s1);
             t2.setText("Contact No:   "+s2);
             t3.setText("Destination:   "+s3);
-            t4.setText("Milk Category:   "+qlt);
-            t5.setText("Milk Quantity:   "+String.valueOf(qnt));
+            t4.setText("Milk Category:   "+qnt);
+            t5.setText("Milk Quantity:   "+ qlt);
             t6.setText("Price:  "+String.valueOf(prc));
 
 
@@ -77,8 +77,8 @@ TextView t1,t2,t3,t4,t5,t6;
             t1.setText("گاہک کا نام:   "+s1);
             t2.setText("رابطہ نمبر:   "+s2);
             t3.setText("منزل:   "+s3);
-            t4.setText("دودھ کی قسم:   "+qlt);
-            t5.setText("دودھ کی مقدار:   "+String.valueOf(qnt));
+            t4.setText("دودھ کی قسم:   "+qnt);
+            t5.setText("دودھ کی مقدار:   "+qlt);
             t6.setText("قیمت:  "+String.valueOf(prc));
 
 

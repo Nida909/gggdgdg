@@ -440,6 +440,8 @@ i.putExtra("Price",price);
             System.out.println("DateFn: ResponseCode:" + ResponseCode);
             if(ResponseCode.equals("000")) {
                 Toast.makeText(getApplicationContext(), "Payment Success", Toast.LENGTH_SHORT).show();
+                database = FirebaseDatabase.getInstance();
+                ref = database.getReference();
                 ref.child("Rider").addValueEventListener(new ValueEventListener() {
                     @Override
                     public void onDataChange(@NonNull DataSnapshot snapshot) {
@@ -451,8 +453,7 @@ i.putExtra("Price",price);
 
                     }
                 });
-                database = FirebaseDatabase.getInstance();
-                ref = database.getReference();
+
                 pp=50+(dis*5);
                 p1=Double.parseDouble(price);
                 p2=p1-pp;
