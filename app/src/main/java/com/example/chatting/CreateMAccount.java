@@ -47,7 +47,6 @@ public class CreateMAccount extends AppCompatActivity {
     String str,check;
 
 
-
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -115,12 +114,14 @@ public class CreateMAccount extends AppCompatActivity {
     }
     public void SaveDetails(View view) {
         db = dbHelper.getWritableDatabase();
+        boolean opt=false;
+        boolean opt1=false;
         String Name = name.getText().toString();
         String Location = location.getText().toString();
         String Email = email.getText().toString();
         String Password = password.getText().toString();
         String ContactNumber = contact.getText().toString();
-
+        String[] column = {"Email", "Name"};
         String MobilePattern = "[0-9]{11}";
         final Pattern Password_Pattern=
                 Pattern.compile("^"+
@@ -133,6 +134,10 @@ public class CreateMAccount extends AppCompatActivity {
 
         if (Name.equals("") || Location.equals("") || Email.equals("") || Password.equals("") || ContactNumber.equals("")) {
             Toast.makeText(this, "Please Fill All Fields", Toast.LENGTH_SHORT).show();
+        }
+        else if(Character.isDigit(Name.charAt(0)))
+        {
+         name.setError("Name must start with Alphabet");
         }
         else if (isEmail(email) == false) {
             email.setError("Invalid email");
@@ -150,78 +155,165 @@ public class CreateMAccount extends AppCompatActivity {
 
 if(check.equals("MilkMan"))
 {
+    Cursor cursor = db.query("MilkMan", column, null, null, null, null, null);
+            if(cursor !=null)
+            {
+                while(cursor.moveToNext())
+                {
+                    String s1,s2;
+                    s1=cursor.getString(0);
+                    s2=cursor.getString(1);
+                    if(s2.equals(Name))
+                    {
+                        opt=true;
+                    }
+                    if(s1.equals(Email))
+                    {
+                        opt1=true;
+                    }
+                }
 
+            }
+            if(opt) {
+                Toast.makeText(CreateMAccount.this,"This name already exist",Toast.LENGTH_SHORT).show();
+            }else if(opt1)
+            {
+                Toast.makeText(CreateMAccount.this,"This Email already exist",Toast.LENGTH_SHORT).show();
+            }
+                else
+             {
+
+                    ContentValues values = new ContentValues();
+                    values.put(DatabaseContract.MilkMan.COL_NAME, Name);
+                    values.put(DatabaseContract.MilkMan.COL_CONTACT, ContactNumber);
+                    values.put(DatabaseContract.MilkMan.COL_LOCATION, Location);
+                    values.put(DatabaseContract.MilkMan.COL_EMAIL, Email);
+                    values.put(DatabaseContract.MilkMan.COL_PASSWORD, Password);
+                    values.put(DatabaseContract.MilkMan.COL_TOTAL_PRICE, 0);
+                    long newRowId = db.insert(DatabaseContract.MilkMan.TABLE_NAME, null, values);
+                    if (newRowId > 0) {
+                        Toast.makeText(this, "New Record Inserted: " + newRowId, Toast.LENGTH_LONG).show();
+                    }
+                    db.close();
+                    Intent intent = new Intent(CreateMAccount.this, AddMilkInfo.class);
+                    intent.putExtra("val1", Email);
+                    intent.putExtra("language", str);
+
+                    startActivity(intent);
+
+            }
+}else if(check.equals("Customer"))
+{
+    Cursor cursor = db.query(DatabaseContract.Customers.TABLE_NAME, column, null, null, null, null, null);
+    if(cursor !=null)
+    {
+        while(cursor.moveToNext())
+        {
+            String s1,s2;
+            s1=cursor.getString(0);
+            s2=cursor.getString(1);
+            if(s2.equals(Name))
+            {
+                opt=true;
+            }
+            if(s1.equals(Email))
+            {
+                opt1=true;
+            }
+        }
+
+    }
+    if(opt) {
+        Toast.makeText(CreateMAccount.this,"This name already exist",Toast.LENGTH_SHORT).show();
+    }else if(opt1)
+    {
+        Toast.makeText(CreateMAccount.this,"This Email already exist",Toast.LENGTH_SHORT).show();
+    }
+    else
+    {
             ContentValues values = new ContentValues();
-            values.put(DatabaseContract.MilkMan.COL_NAME, Name);
-            values.put(DatabaseContract.MilkMan.COL_CONTACT, ContactNumber);
-            values.put(DatabaseContract.MilkMan.COL_LOCATION, Location);
-            values.put(DatabaseContract.MilkMan.COL_EMAIL, Email);
-            values.put(DatabaseContract.MilkMan.COL_PASSWORD, Password);
-           values.put(DatabaseContract.MilkMan.COL_TOTAL_PRICE, 0);
-            long newRowId = db.insert(DatabaseContract.MilkMan.TABLE_NAME, null, values);
+            values.put(DatabaseContract.Customers.COL_NAME, Name);
+            values.put(DatabaseContract.Customers.COL_CONTACT, ContactNumber);
+            values.put(DatabaseContract.Customers.COL_LOCATION, Location);
+            values.put(DatabaseContract.Customers.COL_EMAIL, Email);
+            values.put(DatabaseContract.Customers.COL_PASSWORD, Password);
+            long newRowId = db.insert(DatabaseContract.Customers.TABLE_NAME, null, values);
             if (newRowId > 0) {
                 Toast.makeText(this, "New Record Inserted: " + newRowId, Toast.LENGTH_LONG).show();
             }
-            db.close();
-            Intent intent = new Intent(CreateMAccount.this, AddMilkInfo.class);
-            intent.putExtra("val1", Email);
-    intent.putExtra("language", str);
+            String[] columns = {DatabaseContract.Customers._ID, DatabaseContract.Customers.COL_EMAIL};
+            Cursor c = db.query(DatabaseContract.Customers.TABLE_NAME, columns, DatabaseContract.Customers.COL_EMAIL + "=?", new String[]{Email}
+                    , null, null, null, null);
+            if (c.getCount() > 0) {
+                c.moveToFirst();
+                String vall = String.valueOf(c.getLong(0));
+                Toast.makeText(getApplicationContext(), "Record id" + vall, Toast.LENGTH_SHORT).show();
 
-            startActivity(intent);
-}else if(check.equals("Customer"))
-{
-    ContentValues values = new ContentValues();
-    values.put(DatabaseContract.Customers.COL_NAME, Name);
-    values.put(DatabaseContract.Customers.COL_CONTACT, ContactNumber);
-    values.put(DatabaseContract.Customers.COL_LOCATION, Location);
-    values.put(DatabaseContract.Customers.COL_EMAIL, Email);
-    values.put(DatabaseContract.Customers.COL_PASSWORD, Password);
-    long newRowId = db.insert(DatabaseContract.Customers.TABLE_NAME, null, values);
-    if (newRowId > 0) {
-        Toast.makeText(this, "New Record Inserted: " + newRowId, Toast.LENGTH_LONG).show();
-    }
-    String[] columns = {DatabaseContract.Customers._ID, DatabaseContract.Customers.COL_EMAIL};
-    Cursor c = db.query(DatabaseContract.Customers.TABLE_NAME, columns, DatabaseContract.Customers.COL_EMAIL + "=?", new String[]{Email}
-            , null, null, null, null);
-    if (c.getCount() > 0) {
-        c.moveToFirst();
-        String vall = String.valueOf(c.getLong(0));
-        Toast.makeText(getApplicationContext(), "Record id" + vall, Toast.LENGTH_SHORT).show();
+                db.close();
 
-        db.close();
+                Intent intent = new Intent(CreateMAccount.this, MilkManList.class);
+                intent.putExtra("val", vall);
+                intent.putExtra("language", str);
+                startActivity(intent);
 
-        Intent intent = new Intent(CreateMAccount.this, MilkManList.class);
-        intent.putExtra("val", vall);
-        intent.putExtra("language", str);
-        startActivity(intent);
+        }
     }
 }else
 {
-    ContentValues values = new ContentValues();
-    values.put(DatabaseContract.Riders.COL_NAME, Name);
-    values.put(DatabaseContract.Riders.COL_CONTACT, ContactNumber);
-    values.put(DatabaseContract.Riders.COL_LOCATION, Location);
-    values.put(DatabaseContract.Riders.COL_EMAIL, Email);
-    values.put(DatabaseContract.Riders.COL_PASSWORD, Password);
-    values.put(DatabaseContract.Riders.COL_TOTAL_PRICE, 0);
-    long newRowId = db.insert(DatabaseContract.Riders.TABLE_NAME, null, values);
-    if (newRowId > 0) {
-        Toast.makeText(this, "New Record Inserted: " + newRowId, Toast.LENGTH_LONG).show();
+    Cursor cursor = db.query(DatabaseContract.Riders.TABLE_NAME, column, null, null, null, null, null);
+    if(cursor !=null)
+    {
+        while(cursor.moveToNext())
+        {
+            String s1,s2;
+            s1=cursor.getString(0);
+            s2=cursor.getString(1);
+            if(s2.equals(Name))
+            {
+                opt=true;
+            }
+            if(s1.equals(Email))
+            {
+                opt1=true;
+            }
+        }
+
     }
-    String[] columns = {DatabaseContract.Riders._ID, DatabaseContract.Riders.COL_EMAIL};
-    Cursor c = db.query(DatabaseContract.Riders.TABLE_NAME, columns, DatabaseContract.Riders.COL_EMAIL + "=?", new String[]{Email}
-            , null, null, null, null);
-    if (c.getCount() > 0) {
-        c.moveToFirst();
-        String vall = String.valueOf(c.getLong(0));
-        Toast.makeText(getApplicationContext(), "Record id" + vall, Toast.LENGTH_SHORT).show();
+    if(opt) {
+        Toast.makeText(CreateMAccount.this,"This name already exist",Toast.LENGTH_SHORT).show();
+    }else if(opt1)
+    {
+        Toast.makeText(CreateMAccount.this,"This Email already exist",Toast.LENGTH_SHORT).show();
+    }
+    else
+    {
+            ContentValues values = new ContentValues();
+            values.put(DatabaseContract.Riders.COL_NAME, Name);
+            values.put(DatabaseContract.Riders.COL_CONTACT, ContactNumber);
+            values.put(DatabaseContract.Riders.COL_LOCATION, Location);
+            values.put(DatabaseContract.Riders.COL_EMAIL, Email);
+            values.put(DatabaseContract.Riders.COL_PASSWORD, Password);
+            values.put(DatabaseContract.Riders.COL_TOTAL_PRICE, 0);
+            long newRowId = db.insert(DatabaseContract.Riders.TABLE_NAME, null, values);
+            if (newRowId > 0) {
+                Toast.makeText(this, "New Record Inserted: " + newRowId, Toast.LENGTH_LONG).show();
+            }
+            String[] columns = {DatabaseContract.Riders._ID, DatabaseContract.Riders.COL_EMAIL};
+            Cursor c = db.query(DatabaseContract.Riders.TABLE_NAME, columns, DatabaseContract.Riders.COL_EMAIL + "=?", new String[]{Email}
+                    , null, null, null, null);
+            if (c.getCount() > 0) {
+                c.moveToFirst();
+                String vall = String.valueOf(c.getLong(0));
+                Toast.makeText(getApplicationContext(), "Record id" + vall, Toast.LENGTH_SHORT).show();
 
-        db.close();
+                db.close();
 
-        Intent intent = new Intent(this, orderlist.class);
-        intent.putExtra("val", vall);
-        intent.putExtra("language", str);
-        startActivity(intent);
+                Intent intent = new Intent(this, orderlist.class);
+                intent.putExtra("val", vall);
+                intent.putExtra("language", str);
+                startActivity(intent);
+            }
+
     }
 }
         }
