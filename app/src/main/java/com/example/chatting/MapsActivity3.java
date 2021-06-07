@@ -84,6 +84,7 @@ public class MapsActivity3 extends FragmentActivity implements OnMapReadyCallbac
     double dis;
     double total,total1;
     ImageButton btn;
+    String languages,lang;
     ArrayList<RiderClass> array=new ArrayList<RiderClass>();
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -95,7 +96,7 @@ public class MapsActivity3 extends FragmentActivity implements OnMapReadyCallbac
         milkmanId = intent.getStringExtra("milkmanId");
         cId = intent.getStringExtra("customerId");
         Count=intent.getStringExtra("Count");
-
+        languages=intent.getStringExtra("language");
         Toast.makeText(MapsActivity3.this, pickup + dropoff, Toast.LENGTH_SHORT).show();
        // setHasOptionsMenu(true);
         succes = (Button) findViewById(R.id.succesfull);
@@ -457,8 +458,8 @@ i.putExtra("Price",price);
                 pp=50+(dis*5);
                 p1=Double.parseDouble(price);
                 p2=p1-pp;
-                String[] wherearg={milkmanId};
-/*
+              /*  String[] wherearg={milkmanId};
+
                 String[] columns = { DatabaseContract.MilkMan.COL_TOTAL_PRICE};
                 Cursor c = db.query(DatabaseContract.MilkMan.TABLE_NAME, columns, DatabaseContract.MilkMan._ID + "=?", wherearg
                         , null, null, null, null);
@@ -475,10 +476,10 @@ i.putExtra("Price",price);
                     Toast.makeText(this, count+"  Records updated: " , Toast.LENGTH_SHORT).show();
                 }
 
- */
+
                 String[] wherearg2={RiderId};
-                String[] column = { DatabaseContract.Riders.COL_TOTAL_PRICE};
-              /*  Cursor cr = db.query(DatabaseContract.Riders.TABLE_NAME, column, DatabaseContract.Riders._ID + "=?", wherearg2
+              String[] column = { DatabaseContract.Riders.COL_TOTAL_PRICE};
+               Cursor cr = db.query(DatabaseContract.Riders.TABLE_NAME, column, DatabaseContract.Riders._ID + "=?", wherearg2
                         , null, null, null, null);
                 if (cr.getCount() > 0) {
                     cr.moveToFirst();
@@ -499,10 +500,13 @@ i.putExtra("Price",price);
                 if (con > 0) {
                     Toast.makeText(this, cont+"  Records updated: " , Toast.LENGTH_SHORT).show();
                 }
-                db.close();
-*/
+                db.close();*/
+
+               // database = FirebaseDatabase.getInstance();
+                //ref = database.getReference();
                 ref.child("Orderlocation").child(Count).child("Cancel").setValue("Successfull");
                 Intent intn=new Intent(MapsActivity3.this,MilkManList.class);
+                intn.putExtra("language",languages);
                 startActivity(intn);
             }
             else

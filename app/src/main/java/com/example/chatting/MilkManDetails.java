@@ -109,17 +109,20 @@ public class MilkManDetails extends AppCompatActivity {
         t4.setText(s4);
         t5.setText(s5);
         t6.setText(s6);
-        String[] values={str2,str};
+      /*  String[] values={str2,str};
         Cursor cr=db.query(DatabaseContract.OrderT.TABLE_NAME,null,"PlacedBy=? AND PlacedTo=?",values,null,null,null);
         if (cr.getCount() > 0) {
         }
         else
         {
-            //reviews.isClickable();
+
+                    Toast.makeText(MilkManDetails.this,"You can give review only after placing order",Toast.LENGTH_SHORT).show();
+
             reviews.setClickable(false);
             reviews.setBackgroundColor(Color.GRAY);
-        }
-        db.close();
+
+        }*/
+
     }
     public void onplace(View v)
     {
@@ -132,10 +135,25 @@ public class MilkManDetails extends AppCompatActivity {
     }
     public void onReview(View v)
     {
-        Intent intnte=new Intent(this,review.class);
-        intnte.putExtra("milkman",str);
-        intnte.putExtra("customer",str2);
-        intnte.putExtra("language",lang);
-        startActivity(intnte);
+        String[] values={str2,str};
+        Cursor cr=db.query(DatabaseContract.OrderT.TABLE_NAME,null,"PlacedBy=? AND PlacedTo=?",values,null,null,null);
+        if (cr.getCount() > 0) {
+            Intent intnte=new Intent(this,review.class);
+            intnte.putExtra("milkman",str);
+            intnte.putExtra("customer",str2);
+            intnte.putExtra("language",lang);
+            startActivity(intnte);
+        }
+        else
+        {
+
+            Toast.makeText(MilkManDetails.this,"You can give review only after placing order",Toast.LENGTH_SHORT).show();
+
+            reviews.setClickable(false);
+            reviews.setBackgroundColor(Color.GRAY);
+
+        }
+        db.close();
+
     }
 }

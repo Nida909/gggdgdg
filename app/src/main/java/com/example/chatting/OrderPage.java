@@ -167,6 +167,7 @@ double distance;
         intentt.putExtra("milkmanId",str);
         intentt.putExtra("customerId",str1);
         intentt.putExtra("Count",Count);
+        intentt.putExtra("language", lang);
         startActivity(intentt);
     }
 }

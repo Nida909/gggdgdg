@@ -39,6 +39,7 @@ public class orderlist extends AppCompatActivity {
     Resources resources;
     String lang;
  int count=0;
+    String languages;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -51,7 +52,7 @@ public class orderlist extends AppCompatActivity {
         listView=(ListView)findViewById(R.id.list);
         activity = this;
         customer=new ArrayList<history1>();
-        String languages = intent.getExtras().getString("language");
+     languages = intent.getExtras().getString("language");
 
         if(languages.equals("ENGLISH"))
         {
@@ -167,7 +168,7 @@ public class orderlist extends AppCompatActivity {
                 intent.putExtra("customer",cn);
                 intent.putExtra("Contact",mContact);
                 intent.putExtra("RCount",String.valueOf(Rcount));
-                intent.putExtra("language",lang);
+                intent.putExtra("language",languages);
                 startActivity(intent);
             }
         });

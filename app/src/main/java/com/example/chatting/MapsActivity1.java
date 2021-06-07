@@ -189,6 +189,8 @@ Contact.setText(ccontact);
                                 ref.child("Messages").child(contact).child("msg").removeValue();
                                 ref.child("Messages").child(ccontact).child("msg").removeValue();
                                 Intent in = new Intent(MapsActivity1.this, orderlist.class);
+                                in.putExtra("language",languages);
+
                                 startActivity(in);
 
                             }
@@ -221,6 +223,7 @@ Contact.setText(ccontact);
                             ref.child("Messages").child(ccontact).removeValue();
                             //ref.child("Orderlocation").child(ccontact).child("Cancel").setValue("Unknown");
                             Intent in = new Intent(MapsActivity1.this, orderlist.class);
+                            in.putExtra("language",languages);
                             startActivity(in);
 
                         }
